@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - ResumeAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+    <style>
+        /* Password strength message style */
+        #password-message {
+            font-size: 14px;
+            color: #ff6b6b;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Create Account</h2>
+                <p>Join thousands of professionals optimizing their careers.</p>
+            </div>
+            <form class="auth-form" action="/register" method="post">
+                <div class="input-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter your name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" 
+                           placeholder="Create a strong password" 
+                           pattern="(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
+                           title="Minimum 8 characters, at least one special character (@$!%*?&)" 
+                           required>
+                    <div id="password-message">Minimum 8 characters, at least one special character (@$!%*?&)</div>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <div class="input-group">
+                    <label for="interest">Primary Field of Interest</label>
+                    <select id="interest" name="interest" required>
+                        <option value="" disabled selected>Select your field</option>
+                        <option value="Software Developer">Software Developer</option>
+                        <option value="Java Developer">Java Developer</option>
+                        <option value="AI/ML Engineer">AI/ML Engineer</option>
+                        <option value="Data Scientist">Data Scientist</option>
+                        <option value="Data Analyst">Data Analyst</option>
+                        <option value="DevOps Engineer">DevOps Engineer</option>
+                        <option value="UI/UX Designer">UI/UX Designer</option>
+                        <option value="Project Manager">Project Manager</option>
+                        <option value="HR Specialist">HR Specialist</option>
+                        <option value="Marketing Manager">Marketing Manager</option>
+                        <option value="Business Analyst">Business Analyst</option>
+                        <option value="Quality Assurance Engineer">QA Engineer</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                     <label class="checkbox-group">
+                        <input type="checkbox" name="terms" required>
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+            <div class="auth-footer">
+                <p>Already have an account? <a href="{{ url_for('login') }}">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Optional: live feedback for password validity
+        const passwordInput = document.getElementById('password');
+        const passwordMessage = document.getElementById('password-message');
+
+        passwordInput.addEventListener('input', () => {
+            const pattern = /^(?=.*[@$!%*?&]).{8,}$/;
+            if(pattern.test(passwordInput.value)){
+                passwordMessage.style.color = '#4ade80'; // green
+                passwordMessage.textContent = 'Password looks good!';
+            } else {
+                passwordMessage.style.color = '#ff6b6b'; // red
+                passwordMessage.textContent = 'Minimum 8 characters, at least one special character (@$!%*?&)';
+            }
+        });
+    </script>
+</body>
+</html>

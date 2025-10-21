@@ -1,0 +1,185 @@
+/* --- Dashboard Wrapper --- */
+.dashboard-wrapper { padding: 40px 0; }
+.dashboard-header { margin-bottom: 32px; }
+.dashboard-header h2 { font-size: 28px; }
+.dashboard-header p { color: var(--subtle-text-color); }
+
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px; }
+.stat-card { background: var(--card-bg-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; }
+.stat-card h4 { font-size: 14px; color: var(--subtle-text-color); font-weight: 500; margin-bottom: 8px; }
+.stat-value { font-size: 24px; font-weight: 600; }
+
+.dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; align-items: start; }
+.dashboard-col { display: flex; flex-direction: column; gap: 32px; }
+
+.card { background: var(--card-bg-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.card-header h3 { font-size: 18px; margin: 0; }
+
+/* Resume Analysis Card */
+.overall-score { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
+.overall-score strong { font-size: 36px; font-weight: 700; color: var(--primary-color); }
+.score-breakdown { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+.score-item { display: grid; grid-template-columns: 120px 1fr 40px; align-items: center; gap: 12px; font-size: 14px; }
+.progress-bar { width: 100%; height: 8px; background-color: var(--secondary-color); border-radius: 4px; overflow: hidden; }
+.progress { height: 100%; background-color: var(--primary-color); border-radius: 4px; }
+.score-item span:last-child { font-weight: 600; text-align: right; }
+
+.detected-skills h4 { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+.skills-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.skills-tags span { background-color: var(--secondary-color); color: var(--text-color); padding: 4px 12px; border-radius: 16px; font-size: 12px; font-weight: 500; }
+
+/* Job List */
+.view-all { font-size: 14px; font-weight: 500; color: var(--primary-color); }
+.job-list li { margin-bottom: 8px; }
+.job-list a { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 8px; }
+.job-list a:hover { background-color: var(--background-color); }
+.job-info { display: flex; flex-direction: column; }
+.job-title { font-weight: 600; }
+.job-company { font-size: 14px; color: var(--subtle-text-color); }
+.job-score { font-weight: 600; color: var(--primary-color); background-color: rgba(59,130,246,0.1); padding: 4px 10px; border-radius: 12px; font-size: 12px; }
+
+/* Skill Gaps & Courses */
+.skill-gaps p, .suggested-courses p { color: var(--subtle-text-color); margin-bottom: 16px; }
+.skills-to-add { display: flex; flex-direction: column; gap: 8px; }
+.skills-to-add li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border-color); }
+.skills-to-add button { background: none; border: 1px solid var(--border-color); color: var(--primary-color); width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 16px; }
+
+.suggested-courses .view-all { display: block; text-align: center; margin-top: 16px; }
+
+/* Initial Upload Prompt */
+.initial-upload-prompt { text-align: center; padding: 40px; }
+.initial-upload-prompt h3 { font-size: 20px; margin-bottom: 12px; }
+.initial-upload-prompt p { color: var(--subtle-text-color); margin-bottom: 24px; }
+
+/* Flash Messages */
+.flash-message {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+.flash-message.success { background-color: #059669; color: #D1FAE5; }
+.flash-message.error { background-color: #DC2626; color: #FEE2E2; }
+.flash-message.info { background-color: #D97706; color: #FEF3C7; }
+
+/* Grouped Course List */
+.course-groups { display: flex; flex-direction: column; gap: 24px; margin-top: 16px; }
+.course-skill-header { font-size: 14px; font-weight: 600; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+.course-list { list-style-type: none; padding-left: 0; display: flex; flex-direction: column; gap: 8px; }
+.course-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.course-item a { flex-grow: 1; display: flex; flex-direction: column; padding: 8px; border-radius: 6px; transition: background-color 0.2s; }
+.course-item a:hover { background-color: var(--background-color); }
+.course-item a span:last-child { font-size: 12px; color: var(--subtle-text-color); }
+.btn-add-course { background: none; border: 1px solid var(--border-color); color: var(--primary-color); width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 18px; line-height: 26px; flex-shrink: 0; transition: background-color 0.2s, color 0.2s; }
+.btn-add-course:hover { background-color: var(--primary-color); color: white; }
+
+/* --- Feedback Deep Dive Section --- */
+.feedback-deep-dive {
+    margin-top: 4rem;
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.feedback-deep-dive h2 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 2.5rem;
+}
+
+.feedback-container {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.feedback-col {
+    flex: 1;
+    max-width: 500px;
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 191, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback-col:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 191, 255, 0.15);
+}
+
+.feedback-col h3 {
+    font-size: 1.4em;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.strong-points h3 {
+    color: #27ae60;
+    border-bottom: 2px solid #27ae60;
+}
+
+.weak-points h3 {
+    color: #e74c3c;
+    border-bottom: 2px solid #e74c3c;
+}
+
+.feedback-col h3::before {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.strong-points h3::before {
+    content: '✅';
+}
+
+.weak-points h3::before {
+    content: '⚠️';
+}
+
+.feedback-col ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.feedback-col li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--subtle-text-color);
+}
+
+.feedback-col li::before {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    font-weight: bold;
+}
+
+.strong-points li::before {
+    content: '✓';
+    color: #27ae60;
+}
+
+.weak-points li::before {
+    content: '→';
+    color: #e74c3c;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .feedback-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

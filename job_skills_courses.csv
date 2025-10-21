@@ -1,0 +1,93 @@
+Category,Skill,Course_Link
+Software Developer,Python,https://www.coursera.org/learn/python
+Software Developer,Java,https://www.coursera.org/learn/java-programming
+Software Developer,React,https://www.coursera.org/specializations/meta-react-specialization
+Software Developer,Node.js,https://www.coursera.org/learn/developing-backend-apps-with-nodejs-and-express
+Software Developer,JavaScript,https://www.coursera.org/learn/javascript
+Software Developer,SQL,https://www.coursera.org/learn/packt-the-ultimate-sql-bootcamp-zero-to-hero-in-9-hours-lf9rz
+Software Developer,Git,https://www.coursera.org/learn/introduction-git-github
+Software Developer,Docker,https://www.coursera.org/learn/ibm-containers-docker-kubernetes-openshift
+Software Developer,AWS,https://www.coursera.org/specializations/aws-fundamentals
+Software Developer,CI/CD,https://www.coursera.org/learn/continuous-integration-and-continuous-delivery-ci-cd
+Java Developer,Java,https://www.coursera.org/learn/java-programming
+Java Developer,Spring Boot,https://www.coursera.org/learn/java-spring-boot
+Java Developer,Hibernate,https://www.udemy.com/course/hibernate-and-spring-data-jpa-beginner-to-guru/?couponCode=LETSLEARNNOW
+Java Developer,SQL,https://www.coursera.org/learn/packt-the-ultimate-sql-bootcamp-zero-to-hero-in-9-hours-lf9rz
+Java Developer,REST APIs,https://www.coursera.org/learn/packt-rest-apis-with-flask-and-python-in-2024-i01az
+Java Developer,Maven,https://www.udemy.com/course/apache-maven
+Java Developer,Git,https://www.coursera.org/learn/introduction-git-github
+Java Developer,JPA,https://www.udemy.com/course/spring-boot-data-jpa-hibernate-master-basics-to-advance/
+Java Developer,Microservices,https://www.coursera.org/learn/microservices
+Data Scientist,Python,https://www.coursera.org/learn/python
+Data Scientist,R,https://www.coursera.org/learn/r-programming
+Data Scientist,SQL,https://www.coursera.org/learn/packt-the-ultimate-sql-bootcamp-zero-to-hero-in-9-hours-lf9rz
+Data Scientist,Pandas,https://www.coursera.org/learn/data-analysis-with-python
+Data Scientist,NumPy,https://www.coursera.org/learn/python-for-applied-data-science-ai
+Data Scientist,Scikit-learn,https://www.coursera.org/learn/machine-learning
+Data Scientist,TensorFlow,https://www.coursera.org/professional-certificates/tensorflow-in-practice
+Data Scientist,Tableau,https://www.coursera.org/learn/data-visualization-tableau
+Data Scientist,Spark,https://www.coursera.org/learn/machine-learning-with-apache-spark
+AI/ML Engineer,Python,https://www.coursera.org/learn/python
+AI/ML Engineer,TensorFlow,https://www.coursera.org/professional-certificates/tensorflow-in-practice
+AI/ML Engineer,PyTorch,https://www.coursera.org/professional-certificates/machine-learning-scikit-learn-pytorch-hugging-face
+AI/ML Engineer,Scikit-learn,https://www.coursera.org/learn/machine-learning
+AI/ML Engineer,NLP,https://www.coursera.org/specializations/natural-language-processing
+AI/ML Engineer,Computer Vision,https://www.coursera.org/learn/introduction-computer-vision-watson-opencv
+AI/ML Engineer,Docker,https://www.coursera.org/learn/ibm-containers-docker-kubernetes-openshift
+AI/ML Engineer,Kubernetes,https://www.coursera.org/learn/kubernetes-for-absolute-beginners
+Data Analyst,SQL,https://www.coursera.org/learn/packt-the-ultimate-sql-bootcamp-zero-to-hero-in-9-hours-lf9rz
+Data Analyst,Excel,https://www.coursera.org/professional-certificates/microsoft-excel-skills
+Data Analyst,Python,https://www.coursera.org/learn/python
+Data Analyst,Pandas,https://www.coursera.org/learn/data-analysis-with-python
+Data Analyst,Tableau,https://www.coursera.org/learn/data-visualization-tableau
+Data Analyst,Power BI,https://www.coursera.org/professional-certificates/microsoft-power-bi-data-analyst
+Data Analyst,Statistics,https://www.coursera.org/learn/statistics
+Data Analyst,Communication,https://www.coursera.org/specializations/business-communication
+DevOps Engineer,AWS,https://www.coursera.org/specializations/aws-fundamentals
+DevOps Engineer,Azure,https://www.coursera.org/learn/microsoft-azure-cloud-services
+DevOps Engineer,Docker,https://www.coursera.org/learn/ibm-containers-docker-kubernetes-openshift
+DevOps Engineer,Kubernetes,https://www.coursera.org/learn/kubernetes-for-absolute-beginners
+DevOps Engineer,CI/CD,https://www.coursera.org/learn/continuous-integration-and-continuous-delivery-ci-cd
+DevOps Engineer,Jenkins,https://www.coursera.org/learn/jenkins
+DevOps Engineer,Terraform,https://www.udemy.com/course/terraform-for-the-absolute-beginners/
+DevOps Engineer,Ansible,https://www.udemy.com/course/learn-ansible/?kw=ansible&src=sac
+DevOps Engineer,Python,https://www.coursera.org/learn/python
+UI/UX Designer,Figma,https://www.coursera.org/specializations/intermediatetoadvancedprofessionalfigma-ui-uxdesign
+UI/UX Designer,Sketch,https://www.udemy.com/course/learnsketch3/?couponCode=25BBPMXNVD35
+UI/UX Designer,Adobe XD,https://www.coursera.org/specializations/creative-design-tools-adobe-photoshop-illustrator-acrobat
+UI/UX Designer,User Research,https://www.coursera.org/learn/user-research
+UI/UX Designer,Wireframing,https://www.coursera.org/learn/uiux-wireframing-and-prototyping-with-figma
+UI/UX Designer,Prototyping,https://www.coursera.org/learn/prototyping
+UI/UX Designer,Usability Testing,https://www.coursera.org/specializations/software-quality-assurance-testing
+Project Manager,Agile,https://www.coursera.org/learn/agile-project-management
+Project Manager,Scrum,https://www.coursera.org/learn/agile-development-and-scrum
+Project Manager,PMP,https://www.coursera.org/specializations/pearson-pmp-certification
+Project Manager,JIRA,https://www.coursera.org/learn/agile-atlassian-jira
+Project Manager,Confluence,https://www.udemy.com/course/confluence-beginners-course-for-project-management/?couponCode=25BBPMXNVD35
+Project Manager,Stakeholder Management,https://www.coursera.org/learn/stakeholder-management
+Project Manager,Risk Management,https://www.coursera.org/specializations/risk-management
+HR Specialist,Talent Acquisition,https://www.coursera.org/learn/talent-acquisition
+HR Specialist,HRIS,https://www.coursera.org/professional-certificates/hrci-human-resource-associate
+HR Specialist,Performance Management,https://www.coursera.org/learn/packt-performance-management-8vcq9
+HR Specialist,Compliance,https://www.coursera.org/specializations/regulatory-compliance
+HR Specialist,Onboarding,https://www.coursera.org/learn/recruiting-hiring-onboarding-employees
+HR Specialist,Employee Relations,https://www.coursera.org/learn/employee-relations
+Marketing Manager,SEO,https://www.coursera.org/learn/seo-fundamentals
+Marketing Manager,SEM,https://www.coursera.org/learn/sem
+Marketing Manager,Content Marketing,https://www.coursera.org/learn/content-marketing
+Marketing Manager,Email Marketing,https://www.coursera.org/learn/email-marketing
+Marketing Manager,Google Analytics,https://www.coursera.org/projects/google-analytics-for-beginners-marketing-essentials
+Marketing Manager,Social Media Marketing,https://www.coursera.org/learn/social-media-marketing
+Business Analyst,Requirement Gathering,https://www.coursera.org/learn/requirements-gathering-in-business-analysis
+Business Analyst,SQL,https://www.coursera.org/learn/packt-the-ultimate-sql-bootcamp-zero-to-hero-in-9-hours-lf9rz
+Business Analyst,Business Process Modeling,https://www.coursera.org/learn/business-process-modelling
+Business Analyst,Agile,https://www.coursera.org/learn/agile-project-management
+Business Analyst,JIRA,https://www.coursera.org/learn/agile-atlassian-jira
+Business Analyst,Data Analysis,https://www.coursera.org/learn/introduction-to-data-analytics
+Quality Assurance Engineer,QA Testing,https://www.coursera.org/specializations/software-quality-assurance-testing
+Quality Assurance Engineer,Selenium,https://www.coursera.org/learn/intro-to-selenium
+Quality Assurance Engineer,Jira,https://www.coursera.org/learn/agile-atlassian-jira
+Quality Assurance Engineer,Test Planning,https://www.coursera.org/specializations/software-quality-assurance-testing
+Quality Assurance Engineer,Automation Testing,https://www.coursera.org/specializations/software-testing-automation
+Quality Assurance Engineer,SQL,https://www.coursera.org/learn/packt-the-ultimate-sql-bootcamp-zero-to-hero-in-9-hours-lf9rz
+Quality Assurance Engineer,API Testing,https://www.coursera.org/projects/start-your-api-testing-journey-with-postman-tool

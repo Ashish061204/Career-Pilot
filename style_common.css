@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #00bfff;
+    --secondary-color: #374151;
+    --background-gradient: linear-gradient(135deg, #0d1117 0%, #121826 100%);
+    --card-bg-color: #1a1f2c;
+    --text-color: #e4e6eb;
+    --subtle-text-color: #9ca3af;
+    --border-color: #374151;
+    --container-width: 1140px;
+}
+
+/* --- Reset & Basics --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-gradient);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style-type: none; }
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+.btn-primary { 
+    background: linear-gradient(135deg, #007bff, #00bfff); 
+    color: #fff; 
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+}
+.btn-primary:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 0 25px rgba(0, 191, 255, 0.6);
+}
+.btn-secondary { 
+    background-color: var(--secondary-color); 
+    color: var(--text-color); 
+}
+.btn-secondary:hover { 
+    background-color: #4B5563; 
+}
+.btn-tertiary { 
+    background: none; 
+    border: 1px solid var(--border-color); 
+    color: var(--text-color); 
+}
+.btn-tertiary:hover { 
+    background-color: var(--secondary-color); 
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--card-bg-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 0;
+}
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo { 
+    font-size: 20px; 
+    font-weight: 700; 
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
+}
+.navbar nav ul { 
+    display: flex; 
+    align-items: center; 
+    gap: 24px; 
+}
+.navbar nav a { 
+    color: var(--subtle-text-color); 
+    font-weight: 500; 
+}
+.navbar nav a:hover { 
+    color: var(--text-color); 
+}

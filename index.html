@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerPilot - Transform Your Career</title>
+
+    <!-- Common + Page Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_home.css') }}">
+
+    <!-- ✅ Lottie Animation Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body class="dark-theme">
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="logo">CareerPilot</a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('login') }}" class="btn btn-secondary">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Transform Your Career with <span class="highlight">AI</span></h1>
+                    <p>Get personalized job recommendations, identify skill gaps, and optimize your resume with our intelligent career acceleration platform.</p>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Get Started</a>
+
+                    <div class="hero-benefits">
+                        <span>✓ Made for You</span>
+                        <span>✓ Free forever</span>
+                    </div>
+                </div>
+
+                <!-- ✅ AI Resume Screener Animation -->
+                <div class="hero-image">
+                    <lottie-player
+                        src="https://assets5.lottiefiles.com/packages/lf20_jcikwtux.json"
+                        background="transparent"
+                        speed="1"
+                        style="width: 100%; max-width: 480px; margin: 0 auto;"
+                        loop
+                        autoplay>
+                    </lottie-player>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2>Everything You Need For Career Success</h2>
+                <p class="section-subtitle">Our platform combines cutting-edge AI and expert insights to help you grow faster.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Smart Resume Analysis</h3>
+                        <p>AI-powered parsing extracts key skills, experience, and job-relevant keywords instantly.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Job Matching Algorithm</h3>
+                        <p>Advanced cosine similarity matching finds the best jobs based on your resume profile.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Skill Gap Detection</h3>
+                        <p>Discover missing skills and get AI-driven course recommendations to level up.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

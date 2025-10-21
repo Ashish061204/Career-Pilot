@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ResumeAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_dashboard.css') }}">
+    <style>
+        /* --- Modal Styles for Resume Library --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #888;
+            line-height: 1;
+        }
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .resume-list {
+            list-style: none;
+            padding: 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .resume-list li {
+            margin-bottom: 10px;
+        }
+
+        .resume-list li a {
+            display: block;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: 600;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .resume-list li a:hover {
+            background-color: #eef5ff;
+            transform: translateX(5px);
+        }
+
+        /* Adjusting the card header to fit the new button */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px; /* Add space between buttons */
+        }
+
+        /* ## ADDED: Styles for the initial action buttons container */
+        .initial-actions {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a href="{{ url_for('home') }}" class="logo">Career Pilot</a>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="btn btn-secondary">Sign Out</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-wrapper">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Welcome back, {{ fullname.split(' ')[0] }}!</h2>
+                <p>Your resume will be analyzed based on your interest in: <strong>{{ interest }}</strong></p>
+
+                 {% with messages = get_flashed_messages(with_categories=true) %}
+                   {% if messages %}
+                       {% for category, message in messages %}
+                           <div class="flash-message {{category}}">{{ message }}</div>
+                       {% endfor %}
+                   {% endif %}
+                 {% endwith %}
+            </div>
+
+            {% if analysis %}
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>Resume Score</h4>
+                    <span class="stat-value">{{ analysis.overall_score }}%</span>
+                </div>
+                <div class="stat-card">
+                    <h4>Job Matches</h4>
+                    <span class="stat-value">{{ analysis.recommended_jobs|length }}</span>
+                </div>
+                <div class="stat-card">
+                    <h4>Skill Gaps</h4>
+                    <span class="stat-value">{{ analysis.skill_gaps|length }}</span>
+                </div>
+                <div class="stat-card">
+                    <h4>Last Updated</h4>
+                    <span class="stat-value">Now</span>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-col">
+                    <div class="card resume-analysis">
+                        <div class="card-header">
+                            <h3>Resume Analysis</h3>
+                            <!-- ## REMOVED: "Your Library" button from this view -->
+                            <form action="/dashboard" method="post" enctype="multipart/form-data" class="upload-form-inline">
+                                <label for="resume-upload" class="btn btn-tertiary">Upload New</label>
+                                <input type="file" id="resume-upload" name="resume" onchange="this.form.submit()" style="display:none;">
+                            </form>
+                        </div>
+                        <div class="overall-score">
+                            <span>Overall Score</span>
+                            <strong>{{ analysis.overall_score }}%</strong>
+                        </div>
+                        <div class="score-breakdown">
+                            <div class="score-item">
+                                <label>Skill Match</label> 
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: {{ analysis.skill_match_score }}%;"></div>
+                                </div>
+                                <span>{{ analysis.skill_match_score }}%</span>
+                            </div>
+                             <div class="score-item">
+                                <label>ATS Compatibility</label>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: {{ analysis.ats_compatibility }}%;"></div>
+                                </div>
+                                <span>{{ analysis.ats_compatibility }}%</span>
+                            </div>
+                        </div>
+                        <div class="detected-skills">
+                            <h4>Detected Skills</h4>
+                            <div class="skills-tags">
+                                {% for skill in analysis.detected_skills %}
+                                <span>{{ skill }}</span>
+                                {% else %}
+                                <p>No specific skills detected for this role.</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="resume-keywords">
+                            <h4>Resume Keywords Used for Job Search</h4>
+                            <div class="skills-tags">
+                                {% if analysis.resume_keywords %}
+                                    {% for kw in analysis.resume_keywords.split(",") %}
+                                    <span>{{ kw.strip() }}</span>
+                                    {% endfor %}
+                                {% else %}
+                                <p>No keywords extracted.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card recommended-jobs">
+                        <div class="card-header">
+                            <h3>Recommended Jobs</h3>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <ul class="job-list">
+                            {% for job in analysis.recommended_jobs %}
+                            <li>
+                                <a href="{{ job.link }}" target="_blank" rel="noopener noreferrer">
+                                    <div class="job-info">
+                                        <span class="job-title">{{ job.title }}</span>
+                                        <span class="job-company">{{ job.company }}</span>
+                                        {% if job.description %}
+                                        <p class="job-desc">{{ job.description.split()[:20] | join(' ') }}...</p>
+                                        {% endif %}
+                                    </div>
+                                    <span class="job-score">{{ job.match_score }}% Match</span>
+                                </a>
+                            </li>
+                            {% else %}
+                            <li>No specific jobs to recommend at this time.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="dashboard-col">
+                    <div class="card skill-gaps">
+                        <h3>Skill Gaps</h3>
+                        <p>Skills to improve your job prospects</p>
+                        <ul class="skills-to-add">
+                            {% for skill in analysis.skill_gaps %}
+                            <li><span>{{ skill }}</span><button>+</button></li>
+                            {% else %}
+                            <li>No skill gaps found. Great job!</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="card suggested-courses">
+                        <h3>Suggested Courses</h3>
+                        <p>Learn skills to close your gaps</p>
+                        
+                        <div class="course-groups">
+                            {% for skill, courses in analysis.suggested_courses.items() %}
+                            <div class="course-group">
+                                <h4 class="course-skill-header">{{ skill }}</h4>
+                                <ul class="course-list">
+                                    {% for course in courses %}
+                                    <li class="course-item">
+                                        <a href="{{ course.link }}" target="_blank" rel="noopener noreferrer">
+                                            <span>{{ course.name }}</span>
+                                            <span>{{ course.platform }}</span>
+                                        </a>
+                                        <button class="btn-add-course">+</button>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% else %}
+                            <p>No courses to suggest for the identified skill gaps.</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <!-- ## MODIFIED: This block now includes the "Your Library" button -->
+            <div class="card initial-upload-prompt">
+                <h3>Get Started with Your Analysis</h3>
+                <p>Upload your resume to see your scores, or view your saved resumes in the library.</p>
+                <div class="initial-actions">
+                    <form action="/dashboard" method="post" enctype="multipart/form-data" style="display: inline;">
+                        <label for="initial-resume-upload" class="btn btn-primary">Upload Resume</label>
+                        <input type="file" name="resume" id="initial-resume-upload" onchange="this.form.submit()" style="display:none;">
+                    </form>
+                    <!-- ## MODIFIED: Changed button class to btn-primary for consistent styling -->
+                    <button class="btn btn-primary show-library-btn">Your Library</button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+    
+    {% if analysis %}
+    <section class="feedback-deep-dive">
+        <div class="container">
+            <h2>Resume Feedback & Recommendations</h2>
+            <div class="feedback-container">
+                <div class="feedback-col strong-points">
+                    <h3>Strong Points</h3>
+                    <ul>
+                        {% for point in analysis.strong_points %}
+                            <li>{{ point | replace('✅', '') | trim }}</li>
+                        {% else %}
+                            <li>No specific strengths automatically detected.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="feedback-col weak-points">
+                    <h3>Areas for Improvement</h3>
+                    <ul>
+                        {% for point in analysis.weak_points %}
+                             <li>{{ point | replace('⚠️', '') | replace('👍', '') | trim }}</li>
+                        {% else %}
+                            <li>No specific weaknesses automatically detected.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ## This modal structure remains the same but is now triggered by two possible buttons -->
+    <div id="resume-library-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Your Uploaded Resumes</h3>
+                <button id="close-library-btn" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                {% if uploaded_resumes %}
+                    <ul class="resume-list">
+                        {% for resume in uploaded_resumes %}
+                            <!-- resume[0] is the ID, resume[1] is the filename -->
+                            <li>
+                                <a href="{{ url_for('analyze_resume', resume_id=resume[0]) }}">{{ resume[1] }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>You haven't uploaded any resumes yet. Upload one to see it here!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ## MODIFIED: JavaScript to control the modal visibility using a class selector
+        document.addEventListener('DOMContentLoaded', () => {
+            const showLibraryBtns = document.querySelectorAll('.show-library-btn');
+            const closeLibraryBtn = document.getElementById('close-library-btn');
+            const libraryModal = document.getElementById('resume-library-modal');
+
+            showLibraryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    libraryModal.classList.add('active');
+                });
+            });
+
+            if (closeLibraryBtn) {
+                closeLibraryBtn.addEventListener('click', () => {
+                    libraryModal.classList.remove('active');
+                });
+            }
+
+            if (libraryModal) {
+                // Close modal if user clicks on the background overlay
+                libraryModal.addEventListener('click', (event) => {
+                    if (event.target === libraryModal) {
+                        libraryModal.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+
